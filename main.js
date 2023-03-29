@@ -23,26 +23,33 @@ function randomHole(holes) {
 function peep() {
     const time = randomTime(600, 1000);
     const hole = randomHole(holes);
+    document.querySelector('button').classList.add('hide');
     hole.classList.add('up');
     setTimeout(() => {
         hole.classList.remove('up');
-        if (!timeUp) peep();
+        if (!timeUp){ peep();
+        }
     }, time);
-}
-
-function startGame() {
-    scoreBoard.textContent = 0;
+  }
+  
+  function startGame() {
+    scoreBoard.innerHTML = 0;
     timeUp = false;
     score = 0;
     peep();
-    setTimeout(() => timeUp = true, 15000)
-}
+    setTimeout(() =>{ timeUp = true;
+      document.querySelector('button').classList.remove('hide');
+     ;}, 15000)
+     if(timeUp)
+     {
+     }
+    }
 
 function bonk(e) {
-    if (!e.isTrusted) return; // cheater!
+    if (!e.isTrusted) return;
     score++;
     this.parentNode.classList.remove('up');
     scoreBoard.textContent = score;
 }
 
-moles.forEach(mole => mole.addEventListener('click', bonk));
+moles.forEach((mole) => mole.addEventListener('click', bonk));

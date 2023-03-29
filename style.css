@@ -90,3 +90,6 @@ h1 {
 .hole.up .mole {
   top: 0;
 }
+.hide{
+  display: none;
+}
